@@ -9,10 +9,10 @@
     <title>Welcome to TackIt!</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
     
     <!-- Custom CSS for the 'Round About' Template -->
-    <link href="css/round-about.css" rel="stylesheet">
+    <link href="css/bootstrap/round-about.css" rel="stylesheet">
 
   </head>
 
