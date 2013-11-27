@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -24,12 +25,16 @@
     <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
+          <ul id="categoryMenu" class="nav" style="float: left; margin: 30px 20px 0px 5px;">
+			<li class="dropdown" id="categories">
+	 			<a class="dropdown-toggle" data-toggle="dropdown" href="#categories"><i class="icon-th-list icon-white"></i></a>
+				<ul class="dropdown-menu">
+					<c:forEach var="c" items="${categories}">
+						<li><a href="#">${c.name}</a></li>
+					</c:forEach>
+				</ul>
+			</li>
+		</ul>
           <a class="navbar-brand" href="/tackit/">TackIt!</a>
         </div>
 
@@ -44,10 +49,6 @@
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
-    
-    <div style="float:right">
-	<h3>Welcome ${user}</h3>
-	</div>
     
     <div class="container">
       

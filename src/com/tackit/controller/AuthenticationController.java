@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tackit.domain.User;
+import com.tackit.facade.TackFacade;
 import com.tackit.facade.UserFacade;
 
 @Controller
 public class AuthenticationController {
 
 	private UserFacade userFacade;
+	private TackFacade tackFacade;
+
 	private static final String VIEW_NAME = "commonJsonView";
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
@@ -77,6 +80,15 @@ public class AuthenticationController {
 		
 		session.invalidate();
 		return new ModelAndView("index");
+	}
+	
+	@RequestMapping(value = "/home.htm", method = RequestMethod.GET)
+	public ModelAndView showHome() {
+		return new ModelAndView("index", "categories", tackFacade.getCategories());
+	}
+	
+	public void setTackFacade(TackFacade tackFacade) {
+		this.tackFacade = tackFacade;
 	}
 	
 	public void setUserFacade(UserFacade userFacade) {
