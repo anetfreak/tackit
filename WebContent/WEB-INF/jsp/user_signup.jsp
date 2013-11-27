@@ -43,14 +43,12 @@ $(document).ready(function () {
 	   var lname = $('#lastNameInput').val();
 	   var email = $('#emailInput').val();
 	   var password = $('#passwordInput').val();
-	   var userType = $("input:radio[name=userTypeInput]:checked").val();
 	   
 		$.ajax({
 			url : "signup.htm",
 		    type: "POST",
-		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password + "&userType=" + userType,
+		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password,
 		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="viewProjects.htm";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);
@@ -63,6 +61,30 @@ $(document).ready(function () {
 
 </head>
 <body>
+
+<nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/tackit/">TackIt!</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#about">About US</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="login.htm">Login</a></li>
+            <li><a href="signup.htm">Signup</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
 	
 	<div id="container" style="padding-top: 40px;">
 		<div class="container-fluid">
@@ -120,22 +142,6 @@ $(document).ready(function () {
 									<td><div class="registrationFormAlert" id="divCheckPasswordMatch"></div></td>
 								</tr>
 								<tr></tr>
-								<tr>
-									<td><h2 class="label label-primary">You are a</h2></td>
-									<td></td>
-									<td><div class="col-lg-6">
-   											 <div class="input-group">
-      											<span class="input-group-addon">
-        											<input name="userTypeInput" id="userTypeInputDeveloper" type="radio" class="required" value="0">
-      											</span>
-      											<h2 class="label label-primary">Project Owner</h2>
-      											<span>
-      												<input name="userTypeInput" id="userTypeInputTester" type="radio" class="required" value="1">
-      											</span>
-      											<h2 class="label label-primary">Tester</h2>
-    										</div><!-- /input-group -->
-  										</div><!-- /.col-lg-6 --></td>
-								</tr>
 								<tr></tr>
 								<tr>
 									<td></td>
@@ -149,6 +155,16 @@ $(document).ready(function () {
 					</div>
 				</div>
 			</div>
+			
+			<footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; Company 2013 &middot; Facebook &middot; Twitter &middot; Google+</p>
+          </div>
+        </div>
+      </footer>
+      
+      
 		</div>
 
 </body>
