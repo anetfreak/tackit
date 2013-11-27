@@ -19,7 +19,7 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public ModelAndView showLogin() {
-		return new ModelAndView("auth/user_login");
+		return new ModelAndView("user_login");
 	}
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
@@ -37,17 +37,17 @@ public class AuthenticationController {
 				session.setAttribute("user", userDb);
 				session.setAttribute("sessionId", session.getId());
 			}
-			modelAndView.setViewName("home");
+			modelAndView.setViewName("index");
 		}
 		else{
-			modelAndView.setViewName("auth/user_login");
+			modelAndView.setViewName("user_login");
 		}
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
 	public ModelAndView showSignup() {
-		return new ModelAndView("auth/user_signup");
+		return new ModelAndView("user_signup");
 	}
 
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.POST)
@@ -65,14 +65,14 @@ public class AuthenticationController {
 		session.setAttribute("user", userFacade.getUser(user.getUserName()));
 		session.setAttribute("sessionId", session.getId());
 
-		return new ModelAndView("home");
+		return new ModelAndView("index");
 	}
 	
 	@RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) {
 		
 		session.invalidate();
-		return new ModelAndView("home");
+		return new ModelAndView("index");
 	}
 	
 	public void setUserFacade(UserFacade userFacade) {
