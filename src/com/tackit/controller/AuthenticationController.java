@@ -28,15 +28,17 @@ public class AuthenticationController {
 			HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
-		user.setUserName(email);
+		user.setEmail(email);
 		user.setPassword(password);
 		
-		User userDb = userFacade.getUser(user.getUserName());
+		User userDb = userFacade.getUser(user.getEmail());
 		if(userDb!=null){
-			if(userDb.getUserName().equals(user.getUserName()) && userDb.getPassword().equals(user.getPassword())){
-				session.setAttribute("user", userDb);
+			
+			if(userDb.getEmail().equals(user.getEmail()) && userDb.getPassword().equals(user.getPassword())){
+				
 				session.setAttribute("sessionId", session.getId());
 			}
+			session.setAttribute("user", userDb.getFirst_name());
 			modelAndView.setViewName("index");
 		}
 		else{
@@ -58,11 +60,13 @@ public class AuthenticationController {
 			HttpSession session) {
 		
 		User user = new User();
-		user.setUserName(email);
+		user.setEmail(email);
 		user.setPassword(password);
+		user.setFirst_name(fname);
+		user.setLast_name(lname);
 		userFacade.createUser(user);
 		
-		session.setAttribute("user", userFacade.getUser(user.getUserName()));
+		session.setAttribute("user", fname);
 		session.setAttribute("sessionId", session.getId());
 
 		return new ModelAndView("index");

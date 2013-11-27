@@ -43,12 +43,13 @@ $(document).ready(function () {
 	   var lname = $('#lastNameInput').val();
 	   var email = $('#emailInput').val();
 	   var password = $('#passwordInput').val();
-	   
+	   alert('inside the request');
 		$.ajax({
 			url : "signup.htm",
 		    type: "POST",
 		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password,
 		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="home.htm";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);
