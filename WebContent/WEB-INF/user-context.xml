@@ -20,6 +20,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	
 	<bean id="authenticationController" class="com.tackit.controller.AuthenticationController">
 	 	<property name="userFacade" ref="userFacade" />
+	 	<property name="tackFacade" ref="tackFacade" />
 	</bean>
 	
 	<tx:advice id="userTxnAdvice" transaction-manager="txnManager">

@@ -29,6 +29,7 @@
 			<li class="dropdown" id="categories">
 	 			<a class="dropdown-toggle" data-toggle="dropdown" href="#categories"><i class="icon-th-list icon-white"></i></a>
 				<ul class="dropdown-menu">
+					<li><a href="#">Profile</a></li>
 					<c:forEach var="c" items="${categories}">
 						<li><a href="#">${c.name}</a></li>
 					</c:forEach>
