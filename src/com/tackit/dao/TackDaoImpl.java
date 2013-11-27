@@ -42,7 +42,7 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 			@Override
 			public Category mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Category category = new Category();
-				category.setId(rs.getInt("id"));
+				category.setId(rs.getInt("tack_category_id"));
 				category.setName(rs.getString("name"));
 				category.setDescription(rs.getString("description"));
 				return category;
