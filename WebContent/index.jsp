@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.html">TackIt!</a>
+          <a class="navbar-brand" href="/tackit/">TackIt!</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

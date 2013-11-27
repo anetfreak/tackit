@@ -12,12 +12,26 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
 http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
  
-	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-<!-- 				<prop key="/login.htm">authenticationController</prop> -->
-			</props>
-		</property>
+	<bean id="userDao" class="com.tackit.dao.UserDaoImpl">
+    	<property name="dataSource" ref="dataSource" />
+    </bean>
+    
+    <bean id="userFacade" class="com.tackit.facade.UserFacadeImpl" p:userDao-ref="userDao"/>
+	
+	<bean id="authenticationController" class="com.tackit.controller.AuthenticationController">
+	 	<property name="userFacade" ref="userFacade" />
 	</bean>
 	
+	<tx:advice id="userTxnAdvice" transaction-manager="txnManager">
+		<tx:attributes>
+			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="create*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<aop:config>
+		<aop:advisor pointcut="execution(* *..UserFacade.*(..))"
+			advice-ref="userTxnAdvice" />			
+	</aop:config>
+
 </beans>
