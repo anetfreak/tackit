@@ -104,7 +104,7 @@
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
     <!-- Don't forget to add jQuery - download the most recent version at http://jquery.com/ -->
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/bootstrap/jquery.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
   </body>
 </html>
