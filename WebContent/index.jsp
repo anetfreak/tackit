@@ -9,10 +9,13 @@
     <title>Welcome to TackIt!</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap.css" rel="stylesheet">
     
     <!-- Custom CSS for the 'Round About' Template -->
     <link href="css/round-about.css" rel="stylesheet">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap/bootstrap.js"></script>
 
   </head>
 
@@ -103,7 +106,6 @@
 
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/bootstrap/bootstrap.js"></script>
+   
   </body>
 </html>
