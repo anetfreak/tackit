@@ -156,7 +156,7 @@ $(document).ready(function () {
 				</div>
 			</div>
 			
-			<footer>
+		<footer>
         <div class="row">
           <div class="col-lg-12">
             <p>Copyright &copy; Company 2013 &middot; Facebook &middot; Twitter &middot; Google+</p>
