@@ -14,7 +14,6 @@ public class TackController {
 
 	@RequestMapping(value = "/tacks.htm", method = RequestMethod.GET)
 	public ModelAndView getTacks() {
-		
 		return new ModelAndView("index", "tacks", tackFacade.getTacks());
 	}
 	
