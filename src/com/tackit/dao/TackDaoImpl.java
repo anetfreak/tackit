@@ -30,7 +30,7 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 				tack.setPrivate(false);
 				tack.setLink(rs.getString("url"));
 				tack.setCreateDate(rs.getDate("created_date"));
-				tack.setUpdateDate(rs.getDate("update_date"));
+				tack.setUpdateDate(rs.getDate("modified_date"));
 				return tack;
 			}
 		});

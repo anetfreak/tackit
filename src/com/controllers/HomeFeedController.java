@@ -15,7 +15,7 @@ public class HomeFeedController {
 	
 	TackFacade tackFacade;
 	
-	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	
     public ModelAndView searchContact() {
         
          

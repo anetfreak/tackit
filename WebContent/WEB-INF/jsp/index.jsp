@@ -50,54 +50,26 @@
       </div><!-- /.container -->
     </nav>
     
-    <div class="container">
-      
-      <div class="row">
-      
-        <div class="col-lg-12">
-          <h1 class="page-header">About Us <small>It's Nice to Meet You!</small></h1>
-          <p>This is a great place to start off with a short and sweet description of your company, organization, or whatever purpose your website is serving. Keep it friendly, engaging, but short enough to where you won't lose your reader!</p>
-          <p>If you need a bit more space to describe what is going on, we recommend putting a picture in this section. Use the <code>pull-right</code> class on the image to make it look good!</p>
-        </div>
+<div class="container well">
+<div class="row">
 
-        <div class="col-lg-12">
-          <h2 class="page-header">Our Team</h2>
-        </div>
-
-      </div>
-
-      <div class="row">
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smith <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smath <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smeth <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smyth <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smoth <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-        <div class="col-lg-4 col-sm-6">
-        	<img class="img-circle img-responsive" src="http://placehold.it/200x200">
-            <h3>John Smuth <small>Job Title</small></h3>
-            <p>What does this team member to? Keep it short! This is also a great spot for social links!</p>
-        </div>
-      </div>
+<c:forEach var="tack" items="${tacks}" varStatus="loop">
+  
+  <div class="col-md-3">
+  <div class="thumbnail">
+  <div class="caption">
+  <span class="text-primary text-center"><h3>${tack.title}</h3></span>
+  <a href="${tack.link}"><img alt="${tack.title}" class="img-circle img-responsive resize" src="${tack.link}"></a>
+  <span class="text-info text-center">
+  <h4>${tack.description}</h4>
+  </span>
+  </div>
+  </div>
+  </div>
+    
+</c:forEach>
+	</div>
+	</div>
 
       <hr>
 
