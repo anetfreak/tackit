@@ -114,7 +114,7 @@
   function testAPI() {
    
     FB.api('/me', function(response) {
-    	window.location.href = "http://localhost:8080/tackit/";
+    	//window.location.href = "http://localhost:8080/tackit/login.htm";
     });
   }
 </script>
