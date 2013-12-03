@@ -4,7 +4,7 @@ import com.tackit.domain.User;
 
 public interface UserDao {
 	
-	void createUser(User user);
+	int createUser(User user);
 	
 	User getUser(String userName);
 	

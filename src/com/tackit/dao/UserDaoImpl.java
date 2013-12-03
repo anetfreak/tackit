@@ -20,11 +20,12 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		// TODO Auto-generated method stub
 	}
 	
-	public void createUser(User user) {
+	public int createUser(User user) {
 		// TODO Auto-generated method stub
 		//Make DB call to insert user here
 		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getEmail(), user.getPassword(), user.getFirst_name(),user.getLast_name()});
-//		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
+		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
+		return userId;
 		
 	}
 

@@ -22,4 +22,14 @@ public class TackFacadeImpl implements TackFacade{
 		this.tackDao = tackDao;
 	}
 
+	@Override
+	public List<Tack> getTacksForCategory(int category_id) {
+		return tackDao.getTacksForCategory(category_id);
+	}
+
+	@Override
+	public List<Tack> getTacksForUser(int user_id) {
+		return tackDao.getTacksForUser(user_id);
+	}
+
 }

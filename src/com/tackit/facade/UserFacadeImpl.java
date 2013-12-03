@@ -8,10 +8,10 @@ public class UserFacadeImpl implements UserFacade{
 	private UserDao userDao;
 	
 	@Override
-	public void createUser(User user) {
+	public int createUser(User user) {
 		// TODO Auto-generated method stub
 		// Accept and insert all params in database
-		userDao.createUser(user);
+		return userDao.createUser(user);
 	}
 
 	@Override

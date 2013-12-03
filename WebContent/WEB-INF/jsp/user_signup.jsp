@@ -49,7 +49,8 @@ $(document).ready(function () {
 		    type: "POST",
 		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password,
 		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="home.htm";
+		    	console.log(<%= session.getAttribute("user_id")%>);
+		    	window.location.href="tackuser.htm?user_id="+ <%= session.getAttribute("user_id")%>;
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);
@@ -57,6 +58,20 @@ $(document).ready(function () {
 		});
    });
 });
+
+function getTacksForUser(){
+	$.ajax({
+    url : "tacks.htm",
+    type: "GET",
+    data : "user_id=" + $.session.get('user_id'),
+    success:function(data, textStatus, jqXHR){
+            window.location.href="tacks.htm";
+    },
+    error: function(jqXHR, textStatus, errorThrown){
+            alert("Could not process request.. " + errorThrown);
+    }
+});
+}
 
 </script>
 

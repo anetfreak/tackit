@@ -67,9 +67,10 @@ public class AuthenticationController {
 		user.setPassword(password);
 		user.setFirst_name(fname);
 		user.setLast_name(lname);
-		userFacade.createUser(user);
+		int user_id = userFacade.createUser(user);
 		
 		session.setAttribute("user", fname);
+		session.setAttribute("user_id", user_id);
 		session.setAttribute("sessionId", session.getId());
 
 		return new ModelAndView("index");
