@@ -150,10 +150,10 @@
 
 	<div id="container" style="padding-top: 40px;" align="center">
 		<div class="container-fluid">
-			<div id="loginOptions" style="margin: 80px 0px 0px 50px;">
+			<div id="loginOptions" style="margin: 10px 0px 0px 50px;">
 				<div class="span1"></div>
 				<div class="span4">
-					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
+					<div style="padding: 30px;">
 						<h3> Sign In </h3>
 						<table>
 							<tr>
@@ -173,13 +173,13 @@
 				</div>
 				
 				<div class="divider-vertical"></div>
-				<div class="span1" style="margin-top: 80px;">
+				<div class="span1" style="margin-top: 10px;">
 					<h3> OR </h3>
 				</div>
 				<div class="divider-vertical"></div>
 				
 				<div class="span4">
-					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
+					<div style="padding: 30px;">
 						<h3> Sign In with Facebook </h3>
 						<fb:login-button show-faces="true" width="200" max-rows="1"></fb:login-button>
 					</div>
@@ -190,7 +190,7 @@
 		<footer>
         <div class="row">
           <div class="col-lg-12">
-            <p>Copyright &copy; Company 2013 &middot; Facebook &middot; Twitter &middot; Google+</p>
+            <p>Copyright &copy; TackIt 2013 &middot; Facebook &middot; Twitter &middot; Google+</p>
           </div>
         </div>
       </footer>
