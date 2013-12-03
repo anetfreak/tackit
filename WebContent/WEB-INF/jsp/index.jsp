@@ -50,30 +50,39 @@
       </div><!-- /.container -->
     </nav>
     
-<div class="container well">
+<div class="container" style="min-height: 100%; padding-top: 500px;">
 <div class="row">
-
-<c:forEach var="tack" items="${tacks}" varStatus="loop">
-  
-  <div class="col-md-3">
-  <div class="thumbnail">
-  <div class="caption">
-  <span class="text-primary text-center"><h3>${tack.title}</h3></span>
-  <a href="${tack.link}"><img alt="${tack.title}" class="img-circle img-responsive resize" src="${tack.link}"></a>
-  <span class="text-info text-center">
-  <h4>${tack.description}</h4>
-  </span>
-  </div>
-  </div>
-  </div>
-    
-</c:forEach>
+<c:choose>
+	<c:when test="${tacks ne null}">
+		<c:forEach var="tack" items="${tacks}" varStatus="loop">
+			  <div class="col-md-3">
+				  <div class="thumbnail">
+					  <div class="caption">
+						  <span class="text-primary text-center"><h3>${tack.title}</h3></span>
+						  <a href="${tack.link}"><img alt="${tack.title}" class="img-circle img-responsive resize" src="${tack.link}"></a>
+						  <span class="text-info text-center">
+						  <h4>${tack.description}</h4>
+						  </span>
+					  </div>
+				  </div>
+			  </div>
+		  </c:forEach>
+		</c:when>
+		<c:otherwise>
+			<div>
+				<div class="hero-unit" style="padding: 0px; font-size: 35px; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
+					<div style="width: auto; line-height: 40px; top: 6em; left: 6em; position: absolute; z-index: 10; margin: 0px 0px 0px 0px;">
+					<p style="font-size: 50px;">Welcome to TackIt!</p>
+					</div>
+				</div>
+			</div>
+		</c:otherwise>
+	</c:choose>    
 	</div>
 	</div>
 
+      <footer style="margin-top: 30px;">
       <hr>
-
-      <footer>
         <div class="row">
           <div class="col-lg-12">
             <p>Copyright &copy; TackIt 2013 &middot; Facebook &middot; Twitter &middot; Google+</p>
