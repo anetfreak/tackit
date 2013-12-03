@@ -9,6 +9,13 @@ public class Tack {
 	private String title;
 	private String description;
 	private String link;
+	private String imageSrc;
+	public String getImageSrc() {
+		return imageSrc;
+	}
+	public void setImageSrc(String imageSrc) {
+		this.imageSrc = imageSrc;
+	}
 	private boolean isPrivate;
 	private boolean isActive;
 	private Date createDate;

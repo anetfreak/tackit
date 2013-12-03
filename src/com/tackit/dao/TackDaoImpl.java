@@ -53,6 +53,7 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 				tack.setActive(true);
 				tack.setPrivate(false);
 				tack.setLink(rs.getString("url"));
+				tack.setImageSrc(rs.getString("media"));
 				tack.setCreateDate(rs.getDate("created_date"));
 				tack.setUpdateDate(rs.getDate("modified_date"));
 				return tack;

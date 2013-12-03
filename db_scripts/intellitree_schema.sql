@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 03, 2013 at 12:48 AM
+-- Generation Time: Dec 03, 2013 at 02:18 PM
 -- Server version: 5.5.32
 -- PHP Version: 5.4.16
 
@@ -36,6 +36,11 @@ CREATE TABLE IF NOT EXISTS `affiliate_users` (
   KEY `fk_affiliate_email_idx` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Truncate table before insert `affiliate_users`
+--
+
+TRUNCATE TABLE `affiliate_users`;
 -- --------------------------------------------------------
 
 --
@@ -48,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `tack` (
   `title` varchar(100) NOT NULL,
   `description` varchar(200) DEFAULT NULL,
   `url` varchar(100) NOT NULL,
-  `media` blob,
+  `media` varchar(500) DEFAULT NULL,
   `is_active` tinyint(4) NOT NULL,
   `created_date` datetime NOT NULL,
   `modified_date` datetime NOT NULL,
@@ -58,6 +63,11 @@ CREATE TABLE IF NOT EXISTS `tack` (
   KEY `fk_tack_category_id_idx` (`tack_category_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=334 ;
 
+--
+-- Truncate table before insert `tack`
+--
+
+TRUNCATE TABLE `tack`;
 --
 -- Dumping data for table `tack`
 --
@@ -136,6 +146,11 @@ CREATE TABLE IF NOT EXISTS `tack_board_mapping` (
   KEY `fk_tack_id_board_mapping_idx` (`tack_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `tack_board_mapping`
+--
+
+TRUNCATE TABLE `tack_board_mapping`;
 -- --------------------------------------------------------
 
 --
@@ -150,6 +165,11 @@ CREATE TABLE IF NOT EXISTS `tack_category` (
   UNIQUE KEY `name_UNIQUE` (`name`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
+--
+-- Truncate table before insert `tack_category`
+--
+
+TRUNCATE TABLE `tack_category`;
 --
 -- Dumping data for table `tack_category`
 --
@@ -176,6 +196,11 @@ CREATE TABLE IF NOT EXISTS `tack_category_mapping` (
   KEY `fk_tack_id_category_mapping_idx` (`tack_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `tack_category_mapping`
+--
+
+TRUNCATE TABLE `tack_category_mapping`;
 --
 -- Dumping data for table `tack_category_mapping`
 --
@@ -262,6 +287,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
+-- Truncate table before insert `users`
+--
+
+TRUNCATE TABLE `users`;
+--
 -- Dumping data for table `users`
 --
 
@@ -288,6 +318,11 @@ CREATE TABLE IF NOT EXISTS `user_boards` (
   PRIMARY KEY (`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `user_boards`
+--
+
+TRUNCATE TABLE `user_boards`;
 -- --------------------------------------------------------
 
 --
@@ -301,6 +336,11 @@ CREATE TABLE IF NOT EXISTS `user_board_mapping` (
   KEY `fk_board_id_mapping_idx` (`board_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `user_board_mapping`
+--
+
+TRUNCATE TABLE `user_board_mapping`;
 -- --------------------------------------------------------
 
 --
@@ -315,15 +355,10 @@ CREATE TABLE IF NOT EXISTS `user_categories_mapping` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user_categories_mapping`
+-- Truncate table before insert `user_categories_mapping`
 --
 
-INSERT INTO `user_categories_mapping` (`user_id`, `category_id`) VALUES
-(9, 2),
-(9, 3),
-(9, 2),
-(9, 3);
-
+TRUNCATE TABLE `user_categories_mapping`;
 -- --------------------------------------------------------
 
 --
@@ -341,6 +376,11 @@ CREATE TABLE IF NOT EXISTS `user_groups` (
   PRIMARY KEY (`group_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Truncate table before insert `user_groups`
+--
+
+TRUNCATE TABLE `user_groups`;
 -- --------------------------------------------------------
 
 --
@@ -354,6 +394,11 @@ CREATE TABLE IF NOT EXISTS `user_group_mapping` (
   KEY `fk_user_id_mapping_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `user_group_mapping`
+--
+
+TRUNCATE TABLE `user_group_mapping`;
 -- --------------------------------------------------------
 
 --
@@ -369,6 +414,11 @@ CREATE TABLE IF NOT EXISTS `user_security_profile` (
   PRIMARY KEY (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `user_security_profile`
+--
+
+TRUNCATE TABLE `user_security_profile`;
 -- --------------------------------------------------------
 
 --
@@ -382,6 +432,11 @@ CREATE TABLE IF NOT EXISTS `user_tacks_mapping` (
   KEY `fk_user_tack_mapping_idx` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Truncate table before insert `user_tacks_mapping`
+--
+
+TRUNCATE TABLE `user_tacks_mapping`;
 --
 -- Constraints for dumped tables
 --
@@ -423,8 +478,8 @@ ALTER TABLE `user_board_mapping`
 -- Constraints for table `user_categories_mapping`
 --
 ALTER TABLE `user_categories_mapping`
-  ADD CONSTRAINT `user_categories_mapping_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `tack_category` (`tack_category_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `user_categories_mapping_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `user_categories_mapping_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `user_categories_mapping_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `tack_category` (`tack_category_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_group_mapping`
