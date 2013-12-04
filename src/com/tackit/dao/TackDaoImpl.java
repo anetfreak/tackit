@@ -14,8 +14,8 @@ import com.tackit.domain.UserCategory;
 
 public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 
-	private static final String GET_TACKS = "select id, tack_category_id, title, description, url, is_active, created_date, modified_date, is_private, tack_rating from tack";
-	private static final String GET_TACKS_CATEGORY = "select id, tack_category_id, title, description, url, is_active, created_date, modified_date, is_private, tack_rating from tack where tack_category_id = ";
+	private static final String GET_TACKS = "select id, tack_category_id, title, description, url, media, is_active, created_date, modified_date, is_private, tack_rating from tack";
+	private static final String GET_TACKS_CATEGORY = "select id, tack_category_id, title, description, url, media, is_active, created_date, modified_date, is_private, tack_rating from tack where tack_category_id = ";
 	private static final String GET_CATEORIES = "select tack_category_id, name, description from tack_category";
 	private static final String GET_CATEGORIES_USER = "select category_id from user_categories_mapping where user_id=";
 
@@ -35,6 +35,7 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 						tack.setActive(true);
 						tack.setPrivate(false);
 						tack.setLink(rs.getString("url"));
+						tack.setImageSrc(rs.getString("media"));
 						tack.setCreateDate(rs.getDate("created_date"));
 						tack.setUpdateDate(rs.getDate("modified_date"));
 						return tack;
@@ -110,7 +111,7 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 	}
 
 	private static final String INSERT_TACK = "INSERT into Tack (tack_category_id,title, description, url, media, is_active, created_date, modified_date, is_private, tack_rating ) "
-			+ "values (?, ?, ?, ?, ?, 1 , now() , now(),0, 5)";
+			+ "values (DEFAULT, ?, ?, ?, ?, 1 , now() , now(),0, 5)";
 
 	public Boolean createUserTack(int user_id, int category_id, String title,
 			String description, String link, String imageSrc) {
