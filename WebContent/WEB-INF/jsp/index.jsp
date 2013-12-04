@@ -45,10 +45,14 @@
             <% if(session.getAttribute("user") == null) { %>
             <li><a href="login.htm">Login</a></li>
             <li><a href="signup.htm">Signup</a></li>
+            </ul>
             <% } else { %>
             <li><a href="logout.htm">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+            <li><a href="#addTackModal">+ Add Tack</a></li>
+          	</ul>
             <% } %>
-          </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
@@ -97,6 +101,26 @@
 
     <!-- Bootstrap core JavaScript -->
     <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- Modal Code used for Login -->
+		
+	<div class="modal fade" id="addTackModal" tabindex="-1" role="dialog" aria-labelledby="addTackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	          <h4 class="modal-title">Add Tack</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<div style="text-align: center;"><h5>Add a Tack here</h5></div>
+	        	<div id="addTackAttributes" style="margin: 30px; text-align: center;">
+	        	</div>
+	        </div>
+	      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<!-- Modal Code used for Login -->
    
   </body>
 </html>
