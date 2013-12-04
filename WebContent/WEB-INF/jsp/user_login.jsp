@@ -27,7 +27,7 @@
 				    type: "POST",
 				    data : "email=" + email + "&password=" + password,
 				    success:function(data, textStatus, jqXHR){
-				    	window.location.href="home.htm";
+				    	window.location.href = "tackuser.htm?user_id=" + <%=session.getAttribute("user_id")%>;
 				    },
 				    error: function(jqXHR, textStatus, errorThrown){
 				    	alert("Could not process request.. " + errorThrown);
@@ -141,8 +141,12 @@
           <ul class="nav navbar-nav">
             <li><a href="#about">About US</a></li>
             <li><a href="#contact">Contact</a></li>
+            <% if(session.getAttribute("user") == null) { %>
             <li><a href="login.htm">Login</a></li>
             <li><a href="signup.htm">Signup</a></li>
+            <% } else { %>
+            <li><a href="logout.htm">Logout</a></li>
+            <% } %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->

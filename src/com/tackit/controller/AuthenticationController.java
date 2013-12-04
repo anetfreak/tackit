@@ -36,12 +36,11 @@ public class AuthenticationController {
 		
 		User userDb = userFacade.getUser(user.getEmail());
 		if(userDb!=null){
-			
 			if(userDb.getEmail().equals(user.getEmail()) && userDb.getPassword().equals(user.getPassword())){
-				
+				session.setAttribute("user", userDb);
+				session.setAttribute("user_id", userDb.getId());
 				session.setAttribute("sessionId", session.getId());
 			}
-			session.setAttribute("user", userDb.getFirst_name());
 			modelAndView.setViewName("index");
 		}
 		else{

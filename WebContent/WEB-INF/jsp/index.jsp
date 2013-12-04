@@ -43,14 +43,18 @@
           <ul class="nav navbar-nav">
             <li><a href="#about">About US</a></li>
             <li><a href="#contact">Contact</a></li>
+            <% if(session.getAttribute("user") == null) { %>
             <li><a href="login.htm">Login</a></li>
             <li><a href="signup.htm">Signup</a></li>
+            <% } else { %>
+            <li><a href="logout.htm">Logout</a></li>
+            <% } %>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container -->
     </nav>
     
-<div class="container" style="min-height: 100%; padding-top: 500px;">
+<div class="container" style="min-height: 100%;">
 <div class="row">
 <c:choose>
 	<c:when test="${tacks ne null}">
@@ -59,7 +63,7 @@
 				  <div class="thumbnail">
 					  <div class="caption">
 						  <span class="text-primary text-center"><h3>${tack.title}</h3></span>
-						  <a href="${tack.link}"><img alt="${tack.title}" class="img-circle img-responsive resize" src="${tack.link}"></a>
+						  <a href="${tack.link}"><img alt="${tack.title}" class="img-circle img-responsive resize" src="${tack.imageSrc}"></a>
 						  <span class="text-info text-center">
 						  <h4>${tack.description}</h4>
 						  </span>
@@ -70,7 +74,7 @@
 		</c:when>
 		<c:otherwise>
 			<div>
-				<div class="hero-unit" style="padding: 0px; font-size: 35px; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
+				<div class="hero-unit" style="padding-top: 500px; font-size: 35px; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
 					<div style="width: auto; line-height: 40px; top: 6em; left: 6em; position: absolute; z-index: 10; margin: 0px 0px 0px 0px;">
 					<p style="font-size: 50px;">Welcome to TackIt!</p>
 					</div>
