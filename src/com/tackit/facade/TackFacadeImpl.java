@@ -31,5 +31,11 @@ public class TackFacadeImpl implements TackFacade{
 	public List<Tack> getTacksForUser(int user_id) {
 		return tackDao.getTacksForUser(user_id);
 	}
+	
+	@Override
+    public Boolean createUserTack(int user_id, int category_id, String title, String description, String link, String imageSrc)    
+    {
+        return tackDao.createUserTack(user_id, category_id, title, description, link, imageSrc);
+    }
 
 }

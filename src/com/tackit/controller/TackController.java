@@ -33,5 +33,16 @@ public class TackController {
 	public void setTackFacade(TackFacade tackFacade) {
 		this.tackFacade = tackFacade;
 	}
+	
+	@RequestMapping(value = "/tackad.htm", method = RequestMethod.POST,params = {"user_id","category_id", "title", "description","link","imageSrc"})
+    public ModelAndView createUserTack(@RequestParam(value = "user_id") int user_id,
+            @RequestParam(value = "category_id") int category_id, 
+            @RequestParam(value = "title") String title,
+            @RequestParam(value = "title") String description,
+            @RequestParam(value = "link") String link,
+            @RequestParam(value = "imageSrc") String imageSrc){
+        
+        return new ModelAndView("index", "tacks", tackFacade.createUserTack(user_id,category_id,title,description,link,imageSrc));
+    }
 
 }

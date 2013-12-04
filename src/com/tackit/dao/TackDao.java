@@ -15,4 +15,6 @@ public interface TackDao {
 	List<Tack> getTacksForUser(int user_id);
 	
 	List<Category> getCategories();
+	
+	Boolean createUserTack(int user_id, int category_id, String title, String description, String link, String imageSrc);
 }
