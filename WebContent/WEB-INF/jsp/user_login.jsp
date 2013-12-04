@@ -140,7 +140,6 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
             <li><a href="#about">About US</a></li>
-            <li><a href="#contact">Contact</a></li>
             <% if(session.getAttribute("user") == null) { %>
             <li><a href="login.htm">Login</a></li>
             <li><a href="signup.htm">Signup</a></li>
