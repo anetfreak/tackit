@@ -89,8 +89,13 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 		});
 		
 		List<Tack> resultTacks = new ArrayList<Tack>();
-		for (UserCategory userCategory : userCategories) {
-			resultTacks.addAll(getTacksForCategory(userCategory.getCategory_id()));
+		if(!userCategories.isEmpty()){
+			for (UserCategory userCategory : userCategories) {
+				resultTacks.addAll(getTacksForCategory(userCategory.getCategory_id()));
+			}
+		}
+		else{
+			resultTacks = getTacks();
 		}
 		
 		return resultTacks;

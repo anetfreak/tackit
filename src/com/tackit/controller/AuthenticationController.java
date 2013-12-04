@@ -52,7 +52,7 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
 	public ModelAndView showSignup() {
-		return new ModelAndView("user_signup");
+		return new ModelAndView("user_signup","categories", tackFacade.getCategories());
 	}
 
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.POST)
@@ -85,6 +85,11 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/home.htm", method = RequestMethod.GET)
 	public ModelAndView showHome() {
+		return new ModelAndView("index", "categories", tackFacade.getCategories());
+	}
+	
+	@RequestMapping(value = "/signupload.htm", method = RequestMethod.GET)
+	public ModelAndView showCategoriesSignup() {
 		return new ModelAndView("index", "categories", tackFacade.getCategories());
 	}
 	
