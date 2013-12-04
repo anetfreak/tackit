@@ -17,6 +17,7 @@
     
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.js"></script>
+    <script src="js/bootstrap/bootstrap-modal.js"></script>
 
   </head>
 
@@ -80,6 +81,7 @@
 				<div class="hero-unit" style="padding-top: 500px; font-size: 35px; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
 					<div style="width: auto; line-height: 40px; top: 6em; left: 6em; position: absolute; z-index: 10; margin: 0px 0px 0px 0px;">
 					<p style="font-size: 50px;">Welcome to TackIt!</p>
+					<a href="tacks.htm" class="btn btn-primary">View Tacks</a>
 					</div>
 				</div>
 			</div>
