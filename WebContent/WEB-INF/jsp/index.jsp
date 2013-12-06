@@ -18,6 +18,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="js/bootstrap/bootstrap.js"></script>
     <script src="js/bootstrap/bootstrap-modal.js"></script>
+    <script src="js/global.js"></script>
 
   </head>
 
@@ -51,7 +52,7 @@
             <li><a href="logout.htm">Logout</a></li>
             </ul>
             <ul class="nav navbar-nav pull-right">
-            <li><a href="#addTackModal">+ Add Tack</a></li>
+            <li><a id="showModal" href="#addTackModal">+ Add Tack</a></li>
           	</ul>
             <% } %>
         </div><!-- /.navbar-collapse -->
