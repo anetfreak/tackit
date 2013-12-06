@@ -1,5 +1,7 @@
 package com.tackit.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,15 +36,18 @@ public class TackController {
 		this.tackFacade = tackFacade;
 	}
 	
-	@RequestMapping(value = "/tackad.htm", method = RequestMethod.POST,params = {"user_id","category_id", "title", "description","link","imageSrc"})
-    public ModelAndView createUserTack(@RequestParam(value = "user_id") int user_id,
+	@RequestMapping(value = "/tackad.htm", method = RequestMethod.POST)
+    public ModelAndView createUserTack(
             @RequestParam(value = "category_id") int category_id, 
             @RequestParam(value = "title") String title,
-            @RequestParam(value = "title") String description,
+            @RequestParam(value = "description") String description,
             @RequestParam(value = "link") String link,
-            @RequestParam(value = "imageSrc") String imageSrc){
+            @RequestParam(value = "imageSrc") String imageSrc,
+            HttpSession session){
         
-        return new ModelAndView("index", "tacks", tackFacade.createUserTack(user_id,category_id,title,description,link,imageSrc));
+		Integer user_id = (Integer) session.getAttribute("user_id");
+		tackFacade.createUserTack(user_id,category_id,title,description,link,imageSrc);
+        return new ModelAndView("index");
     }
 
 }

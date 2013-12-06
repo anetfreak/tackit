@@ -110,8 +110,8 @@ public class TackDaoImpl extends JdbcDaoSupport implements TackDao {
 		return resultTacks;
 	}
 
-	private static final String INSERT_TACK = "INSERT into Tack (tack_category_id,title, description, url, media, is_active, created_date, modified_date, is_private, tack_rating ) "
-			+ "values (DEFAULT, ?, ?, ?, ?, 1 , now() , now(),0, 5)";
+	private static final String INSERT_TACK = "INSERT into tack (tack_category_id,title, description, url, media, is_active, created_date, modified_date, is_private, tack_rating ) "
+			+ "values (?, ?, ?, ?, ?, 1 , now() , now(),0, 5)";
 
 	public Boolean createUserTack(int user_id, int category_id, String title,
 			String description, String link, String imageSrc) {

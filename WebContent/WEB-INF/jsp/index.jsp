@@ -19,6 +19,28 @@
     <script src="js/bootstrap/bootstrap.js"></script>
     <script src="js/bootstrap/bootstrap-modal.js"></script>
     <script src="js/global.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+		
+		$('#addTack').click(function(event) {
+				var title = $('#title').val();
+				var description = $('#description').val();
+				var url = $('#url').val();
+				var imageUrl = $('#imageUrl').val();
+				$.ajax({
+					url : "tackad.htm",
+				    type: "POST",
+				    data : "title=" + title + "&description=" + description + "&link=" + url + "&imageSrc=" + imageUrl + "&category_id=" + 2,
+				    success:function(data, textStatus, jqXHR){
+				    	window.location.href = "";
+				    },
+				    error: function(jqXHR, textStatus, errorThrown){
+				    	alert("Could not process request.. " + errorThrown);
+				    }
+				});
+		});
+    });
+	</script>
 
   </head>
 
@@ -115,8 +137,32 @@
 	          <h4 class="modal-title">Add Tack</h4>
 	        </div>
 	        <div class="modal-body">
-	        	<div style="text-align: center;"><h5>Add a Tack here</h5></div>
 	        	<div id="addTackAttributes" style="margin: 30px; text-align: center;">
+	        		<div style="text-align: left; margin: 10px;">Title: <input type="text" id="title"/></div>
+	        		<div style="margin: 10px; text-align: left;">Description: <input type="text" id="description"/></div>
+	        		<div style="margin: 10px; text-align: left;">Tack URL: <input type="text" id="url"/></div>
+	        		<div style="margin: 10px; text-align: left;">Image URL: <input type="text" id="imageUrl"/></div>
+	        		<div>
+       					<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="1"> Automobile
+						</label>
+						<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="2"> Education
+						</label>
+						<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="3"> Photography
+						</label>
+						<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="4"> Food
+						</label>
+						<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="5"> Travel
+						</label>
+						<label class="checkbox inline">
+							<input type="checkbox" id="catCheckBox" value="6"> Nature
+						</label>
+	        		</div>
+	        		<div><input type="button" class="btn" id="addTack" value="Add Tack"></div>
 	        	</div>
 	        </div>
 	      </div><!-- /.modal-content -->

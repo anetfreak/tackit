@@ -1,5 +1,7 @@
 package com.tackit.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.tackit.domain.Category;
 import com.tackit.domain.User;
 import com.tackit.facade.TackFacade;
 import com.tackit.facade.UserCategoryFacade;
@@ -48,6 +51,8 @@ public class AuthenticationController {
 		else{
 			modelAndView.setViewName("user_login");
 		}
+		List<Category> categories = tackFacade.getCategories();
+		modelAndView.addObject("categories", categories);
 		return modelAndView;
 	}
 	
