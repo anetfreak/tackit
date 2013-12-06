@@ -83,7 +83,7 @@
 
 				if(options.sortable) makeSortable();
 
-				if($.browser.msie && $.browser.version < 8) $ol.css('display', 'inline-block'); // Thanks Matthew Hutton
+				//if($.browser.msie && $.browser.version < 8) $ol.css('display', 'inline-block'); // Thanks Matthew Hutton
 			}
 
 			function makeSortable() {
@@ -122,7 +122,7 @@
 				// an item has been selected on the regular select we created
 				// check to make sure it's not an IE screwup, and add it to the list
 
-				if($.browser.msie && $.browser.version < 7 && !ieClick) return;
+//				if($.browser.msie && $.browser.version < 7 && !ieClick) return;
 				var id = $(this).children("option:selected").slice(0,1).attr('rel'); 
 				addListItem(id); 	
 				ieClick = false; 
@@ -223,7 +223,7 @@
 					.attr("disabled", true);
 
 				if(options.hideWhenAdded) $option.hide();
-				if($.browser.msie) $select.hide().show(); // this forces IE to update display
+				//if($.browser.msie) $select.hide().show(); // this forces IE to update display
 			}
 
 			function enableSelectOption($option) {
@@ -234,7 +234,7 @@
 					.attr("disabled", false);
 
 				if(options.hideWhenAdded) $option.show();
-				if($.browser.msie) $select.hide().show(); // this forces IE to update display
+//				if($.browser.msie) $select.hide().show(); // this forces IE to update display
 			}
 
 			function addListItem(optionId) {

@@ -174,10 +174,10 @@ $.ui.mouse = {
 		});
 		
 		// Prevent text selection in IE
-		if ($.browser.msie) {
+		/*if ($.browser.msie) {
 			this._mouseUnselectable = this.element.attr('unselectable');
 			this.element.attr('unselectable', 'on');
-		}
+		}*/
 		
 		this.started = false;
 	},
@@ -188,8 +188,8 @@ $.ui.mouse = {
 		this.element.unbind('.'+this.widgetName);
 		
 		// Restore text selection in IE
-		($.browser.msie
-			&& this.element.attr('unselectable', this._mouseUnselectable));
+		/*($.browser.msie
+			&& this.element.attr('unselectable', this._mouseUnselectable));*/
 	},
 	
 	mouseDown: function(e) {
@@ -236,9 +236,9 @@ $.ui.mouse = {
 	
 	mouseMove: function(e) {
 		// IE mouseup check - mouseup happened when mouse was out of window
-		if ($.browser.msie && !e.button) {
+		/*if ($.browser.msie && !e.button) {
 			return this.mouseUp(e);
-		}
+		}*/
 		
 		if (this._mouseStarted) {
 			this.mouseDrag(e);
@@ -366,7 +366,7 @@ $.widget("ui.draggable", $.extend($.ui.mouse, {
 		};
 		
 		this.offsetParent = this.helper.offsetParent(); var po = this.offsetParent.offset();			//Get the offsetParent and cache its position
-		if(this.offsetParent[0] == document.body && $.browser.mozilla) po = { top: 0, left: 0 };		//Ugly FF3 fix
+		//if(this.offsetParent[0] == document.body && $.browser.mozilla) po = { top: 0, left: 0 };		//Ugly FF3 fix
 		this.offset.parent = {																			//Store its position plus border
 			top: po.top + (parseInt(this.offsetParent.css("borderTopWidth"),10) || 0),
 			left: po.left + (parseInt(this.offsetParent.css("borderLeftWidth"),10) || 0)

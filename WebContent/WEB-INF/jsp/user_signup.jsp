@@ -16,107 +16,134 @@
 
 <!-- CSS for category select -->
 <link href="css/jquery.asmselect.css" rel="stylesheet">
+<link href="css/example.css" rel="stylesheet">
 
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="js/bootstrap/bootstrap.js"></script>
 
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="js/jquery.ui.js"></script>
 <script type="text/javascript" src="js/jquery.asmselect.js"></script>
 <script type="text/javascript"
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+<script	src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
-		$("#subForm").validate();
-	});
-</script>
-<script
-	src="http://jquery.bassistance.de/validate/additional-methods.js">
-	function checkPasswordMatch() {
-		//var checkPasswordMatch = function() {
-		var password = $("#passwordInput").val();
-		var rePassword = $("#reEnterPasswordInput").val();
+function checkPasswordMatch() {
+	//var checkPasswordMatch = function() {
+	var password = $("#passwordInput").val();
+	var rePassword = $("#reEnterPasswordInput").val();
+	
 
-		if (password != rePassword)
-			$("#divCheckPasswordMatch").html("Passwords do not match!");
-		else {
-			$("#divCheckPasswordMatch").html("Passwords match.");
-		}
+	if (password != rePassword)
+		$("#divCheckPasswordMatch").html("Passwords do not match!");
+	else {
+		$("#divCheckPasswordMatch").html("Passwords match.");
+	}
+}
+	
+function removeCat(list, value, separator) {
+	  separator = separator || ",";
+	  var values = list.split(separator);
+	  for(var i = 0 ; i < values.length ; i++) {
+	    if(values[i] == value) {
+	      values.splice(i, 1);
+	      return values.join(separator);
+	    }
+	  }
+	  return list;
 	}
 
-	$(document)
-			.ready(
-					function() {
+$(document)
+		.ready(
+				function() {
+					var categs = "";
+					$("#subForm").validate();
+					$("#reEnterPasswordInput").keyup(checkPasswordMatch());
 
-						$("#reEnterPasswordInput").keyup(checkPasswordMatch());
-
-						$("select[multiple]").asmSelect({
-							addItemTarget : 'bottom',
-							animate : true,
-							highlight : true,
-							sortable : true
-						});
-
-						$('#signup')
-								.click(
-										function(event) {
-
-											var fname = $('#firstNameInput')
-													.val();
-											var lname = $('#lastNameInput')
-													.val();
-											var email = $('#emailInput').val();
-											var password = $('#passwordInput')
-													.val();
-											alert('inside the request');
-											$
-													.ajax({
-														url : "signup.htm",
-														type : "POST",
-														data : "fname=" + fname
-																+ "&lname="
-																+ lname
-																+ "&email="
-																+ email
-																+ "&password="
-																+ password,
-														success : function(
-																data,
-																textStatus,
-																jqXHR) {
-															console
-																	.log(
-<%=session.getAttribute("user_id")%>
-	);
-															window.location.href = "tackuser.htm?user_id="
-																	+
-<%=session.getAttribute("user_id")%>
-	;
-														},
-														error : function(jqXHR,
-																textStatus,
-																errorThrown) {
-															alert("Could not process request.. "
-																	+ errorThrown);
-														}
-													});
-										});
+					$("select[multiple]").asmSelect({
+						addItemTarget : 'top',
+						animate : true,
+						highlight : true,
+						sortable : true
 					});
+					
+					$("#categories").change(function(e, data) {
+						// add category to variable
+						if(data.type == "add"){
+						if(categs == ""){
+							categs = data.value;
+						}
+						else{
+							categs = categs + "," + data.value;
+						}
+						}
+						else{
+							var value = data.value;
+							var separator = ",";
+							var removeValue = removeCat(categs,data.value,",");
+							categs = removeValue;
+						}
+					}); 
 
-	function getTacksForUser() {
-		$.ajax({
-			url : "tacks.htm",
-			type : "GET",
-			data : "user_id=" + $.session.get('user_id'),
-			success : function(data, textStatus, jqXHR) {
-				window.location.href = "tacks.htm";
-			},
-			error : function(jqXHR, textStatus, errorThrown) {
-				alert("Could not process request.. " + errorThrown);
-			}
-		});
-	}
+					$('#signup')
+							.click(
+									function(event) {
+
+										var fname = $('#firstNameInput')
+												.val();
+										var lname = $('#lastNameInput')
+												.val();
+										var email = $('#emailInput').val();
+										var password = $('#passwordInput')
+												.val();
+										alert('inside the request');
+										$
+												.ajax({
+													url : "signup.htm",
+													type : "POST",
+													data : "fname=" + fname
+															+ "&lname="
+															+ lname
+															+ "&email="
+															+ email
+															+ "&password="
+															+ password + "&categories=" + categs,
+													success : function(
+															data,
+															textStatus,
+															jqXHR) {
+														console
+																.log(
+<%=session.getAttribute("user_id")%>
+);
+														window.location.href = "tackuser.htm?user_id="
+																+
+<%=session.getAttribute("user_id")%>
+;
+													},
+													error : function(jqXHR,
+															textStatus,
+															errorThrown) {
+														alert("Could not process request.. "
+																+ errorThrown);
+													}
+												});
+									});
+				});
+
+function getTacksForUser() {
+	$.ajax({
+		url : "tacks.htm",
+		type : "GET",
+		data : "user_id=" + $.session.get('user_id'),
+		success : function(data, textStatus, jqXHR) {
+			window.location.href = "tacks.htm";
+		},
+		error : function(jqXHR, textStatus, errorThrown) {
+			alert("Could not process request.. " + errorThrown);
+		}
+	});
+}
 </script>
 
 </head>
@@ -218,9 +245,10 @@
 							<div class="col-sm-offset-2 col-sm-10">
 								<select id="categories" multiple="multiple" name="categories[]" title="Click to Select a Category">
 									<c:forEach var="c" items="${categories}">
-										<option>${c.name}</option>
+										<option value="${c.id}">${c.name}</option>
 									</c:forEach>
 								</select>
+								<ul id="changes"></ul>
 								</div>
 							</td>
 							</tr>
