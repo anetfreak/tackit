@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.tackit.domain.User;
 import com.tackit.facade.TackFacade;
+import com.tackit.facade.UserCategoryFacade;
 import com.tackit.facade.UserFacade;
 
 @Controller
@@ -17,6 +18,7 @@ public class AuthenticationController {
 
 	private UserFacade userFacade;
 	private TackFacade tackFacade;
+	private UserCategoryFacade userCatFacade;
 
 	private static final String VIEW_NAME = "commonJsonView";
 
@@ -59,6 +61,7 @@ public class AuthenticationController {
 			@RequestParam("lname") String lname, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
+			@RequestParam("categories") String categories,
 			HttpSession session) {
 		
 		User user = new User();
@@ -67,7 +70,7 @@ public class AuthenticationController {
 		user.setFirst_name(fname);
 		user.setLast_name(lname);
 		int user_id = userFacade.createUser(user);
-		
+		boolean res = userCatFacade.createUserCategoryMapping(user_id, categories);
 		session.setAttribute("user", fname);
 		session.setAttribute("user_id", user_id);
 		session.setAttribute("sessionId", session.getId());
@@ -98,5 +101,9 @@ public class AuthenticationController {
 	
 	public void setUserFacade(UserFacade userFacade) {
 		this.userFacade = userFacade;
+	}
+	
+	public void setUserCategoryFacade(UserCategoryFacade userCategoryFacade) {
+		this.userCatFacade = userCategoryFacade;
 	}
 }

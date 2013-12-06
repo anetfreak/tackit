@@ -16,11 +16,17 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     	<property name="dataSource" ref="dataSource" />
     </bean>
     
+	<bean id="userCategoryDao" class="com.tackit.dao.UserCategoryDaoImpl">
+    	<property name="dataSource" ref="dataSource" />
+    </bean>
+    
     <bean id="userFacade" class="com.tackit.facade.UserFacadeImpl" p:userDao-ref="userDao"/>
+     <bean id="userCategoryFacade" class="com.tackit.facade.UserCategoryFacadeImpl" p:userCategoryDao-ref="userCategoryDao"/>
 	
 	<bean id="authenticationController" class="com.tackit.controller.AuthenticationController">
 	 	<property name="userFacade" ref="userFacade" />
 	 	<property name="tackFacade" ref="tackFacade" />
+	 	<property name="userCategoryFacade" ref="userCategoryFacade" />
 	</bean>
 	
 	<tx:advice id="userTxnAdvice" transaction-manager="txnManager">

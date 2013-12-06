@@ -84,11 +84,17 @@ $(document)
 							categs = removeValue;
 						}
 					}); 
-
+	
 					$('#signup')
 							.click(
 									function(event) {
-
+										console.log("fname=" + fname
+												+ "&lname="
+												+ lname
+												+ "&email="
+												+ email
+												+ "&password="
+												+ password + "&categories=" + categs);
 										var fname = $('#firstNameInput')
 												.val();
 										var lname = $('#lastNameInput')
