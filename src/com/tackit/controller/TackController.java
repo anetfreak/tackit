@@ -26,10 +26,10 @@ public class TackController {
 		return new ModelAndView("index", "tacks", tackFacade.getTacksForCategory(category_id));
 	}
 	
-	@RequestMapping(value = "/tackuser.htm", method = RequestMethod.GET,params = {"user_id"})
-	public ModelAndView getTacksForUser(@RequestParam(value = "user_id") int user_id ) {
+	@RequestMapping(value = "/tackuser.htm", method = RequestMethod.GET)
+	public ModelAndView getTacksForUser(HttpSession session) {
 		
-		return new ModelAndView("index", "tacks", tackFacade.getTacksForUser(user_id));
+		return new ModelAndView("index", "tacks", tackFacade.getTacksForUser((Integer) session.getAttribute("user_id")));
 	}
 	
 	public void setTackFacade(TackFacade tackFacade) {

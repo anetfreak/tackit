@@ -102,7 +102,6 @@ $(document)
 										var email = $('#emailInput').val();
 										var password = $('#passwordInput')
 												.val();
-										alert('inside the request');
 										$
 												.ajax({
 													url : "signup.htm",
@@ -118,14 +117,8 @@ $(document)
 															data,
 															textStatus,
 															jqXHR) {
-														console
-																.log(
-<%=session.getAttribute("user_id")%>
-);
-														window.location.href = "tackuser.htm?user_id="
-																+
-<%=session.getAttribute("user_id")%>
-;
+														console.log(<%=session.getAttribute("user_id")%>);
+														window.location.href = "tackuser.htm";
 													},
 													error : function(jqXHR,
 															textStatus,
